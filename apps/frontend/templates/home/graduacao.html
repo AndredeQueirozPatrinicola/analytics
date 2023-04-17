@@ -11,25 +11,32 @@
   <div class="card-dash-5">
     <span class="messages"><i class="fa-regular fa-circle-exclamation"></i> Ano inicial maior que ano final</span>
     <div class="select-container">
-      <label>Relativo</label>
-      <input type="checkbox" class="check-box">
+      <div>
+        <label>Relativo</label>
+        <input type="checkbox" class="check-box">
+      </div>
 
-      <label>Ano</label>
-      <select class="select-grafico">
-        {% for ano in anos_reverse %}
-            <option value="{{ ano }}">{{ ano }}</option>
-        {% endfor %}
-      </select>
+      <div>
+        <label>Ano</label>
+        <select class="select-grafico">
+          {% for ano in anos_reverse %}
+          <option value="{{ ano }}">{{ ano }}</option>
+          {% endfor %}
+        </select>
+      </div>
 
-      <select class="select-grafico raca-sexo">
-        {% for departamento in departamentos %}
-        {% if departamento == 'Geral' %}
-        <option value="">{{ departamento }}</option>
-        {% else %}
-        <option value="{{ departamento }}">{{ departamento }}</option>
-        {% endif %}
-        {% endfor %}
-      </select>
+      <div>
+        <label>Departamento</label>
+        <select class="select-grafico raca-sexo">
+          {% for departamento in departamentos %}
+            {% if departamento == 'Geral' %}
+              <option value="">{{ departamento }}</option>
+            {% else %}
+              <option value="{{ departamento }}">{{ departamento }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </div>
 
       <btn class="btn btn-dark me-5" style="background-color: #052e70;">
         Buscar
@@ -40,7 +47,7 @@
 
       <canvas id="raca-sexo"></canvas>
 
-      <div class="loader"></div> 
+      <div class="loader show"></div>
 
       {% include 'includes/fonte.html' %}
     </div>
@@ -48,23 +55,33 @@
   <div class="card-dash-5">
     <span class="messages"><i class="fa-regular fa-circle-exclamation"></i> Ano inicial maior que ano final</span>
     <div class="select-container">
-      <label>Relativo</label>
-      <input type="checkbox" class="check-box">
+      <div>
+        <label>Relativo</label>
+        <input type="checkbox" class="check-box">
+      </div>
 
-      <label>Ano inicial</label>
-      {% include 'includes/anos.html' %}
+      <div>
+        <label>Ano inicial</label>
+        {% include 'includes/anos.html' %}
+      </div>
 
-      <label>Ano final</label>
-      {% include 'includes/anos_reverse.html' %}
-      <select class="select-grafico sexo-por-ano">
-        {% for departamento in departamentos %}
-        {% if departamento == 'Geral' %}
-        <option value="">{{ departamento }}</option>
-        {% else %}
-        <option value="{{ departamento }}">{{ departamento }}</option>
-        {% endif %}
-        {% endfor %}
-      </select>
+      <div>
+        <label>Ano final</label>
+        {% include 'includes/anos_reverse.html' %}
+      </div>
+
+      <div>
+        <label>Departamento</label>
+        <select class="select-grafico sexo-por-ano">
+          {% for departamento in departamentos %}
+          {% if departamento == 'Geral' %}
+          <option value="">{{ departamento }}</option>
+          {% else %}
+          <option value="{{ departamento }}">{{ departamento }}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+      </div>
 
       <btn class="btn btn-dark me-5" style="background-color: #052e70;">
         Buscar
@@ -74,7 +91,7 @@
 
       <canvas id="sexo-por-ano"></canvas>
 
-      <div class="loader"></div> 
+      <div class="loader show"></div>
 
       {% include 'includes/fonte.html' %}
     </div>
@@ -85,23 +102,33 @@
   <div class="card-dash-6">
     <span class="messages"><i class="fa-regular fa-circle-exclamation"></i> Ano inicial maior que ano final</span>
     <div class="select-container">
-      <label>Relativo</label>
-      <input type="checkbox" class="check-box">
+      <div>
+        <label>Relativo</label>
+        <input type="checkbox" class="check-box">
+      </div>
 
-      <label>Ano inicial</label>
-      {% include 'includes/anos.html' %}
+      <div>
+        <label>Ano inicial</label>
+        {% include 'includes/anos.html' %}
+      </div>
 
-      <label>Ano final</label>
-      {% include 'includes/anos_reverse.html' %}
-      <select class="select-grafico raca-atual">
-        {% for departamento in departamentos %}
+      <div>
+        <label>Ano final</label>
+        {% include 'includes/anos_reverse.html' %}
+      </div>
+
+      <div>
+        <label>Departamento</label>
+        <select class="select-grafico raca-atual">
+          {% for departamento in departamentos %}
           {% if departamento == 'Geral' %}
-            <option value="">{{ departamento }}</option>
+          <option value="">{{ departamento }}</option>
           {% else %}
-            <option value="{{ departamento }}">{{ departamento }}</option>
+          <option value="{{ departamento }}">{{ departamento }}</option>
           {% endif %}
-        {% endfor %}
-      </select>
+          {% endfor %}
+        </select>
+      </div>
 
       <btn class="btn btn-dark me-5" style="background-color: #052e70;">
         Buscar
@@ -112,7 +139,7 @@
 
       <canvas id="raca-por-ano"></canvas>
 
-      <div class="loader"></div> 
+      <div class="loader show"></div>
 
       {% include 'includes/fonte.html' %}
     </div>

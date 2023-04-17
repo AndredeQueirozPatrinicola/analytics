@@ -13,20 +13,20 @@ const DEFAULT_PARAMS = {
 async function formataParametros(parameters) {
   if (parameters.length === 4) {
     return {
-      "ano_inicial": parameters[0],
-      "ano_final": parameters[1],
-      "departamento": parameters[2],
-      "stacked": parameters[3]
+      "stacked": parameters[0],
+      "ano_inicial": parameters[1],
+      "ano_final": parameters[2],
+      "departamento": parameters[3],
     }
   }
   else if (parameters.length === 3) {
     return {
-      "ano": parameters[0],
-      "departamento": parameters[1],
-      "stacked" : parameters[2]
+      "stacked": parameters[0],
+      "ano": parameters[1],
+      "departamento": parameters[2]
     }
   }
-  else if(parameters.length === 2){
+  else if (parameters.length === 1) {
     return {
       "departamento": parameters[0]
     }
@@ -38,7 +38,7 @@ async function raiseDataError(ctx) {
 }
 
 async function plotaGrafico(element, parameters) {
-  
+
   let chart = Chart.getChart(element.id)
   if (!chart) {
     const config = await pegaApi(element, DEFAULT_PARAMS)
@@ -59,19 +59,29 @@ async function plotaGrafico(element, parameters) {
 
 async function submitPost(element) {
   const message = element.parentElement.parentElement.firstElementChild;
-  message.classList.remove('active-message')
-
   const parent = element.parentElement;
   const chart = Array.from(parent.parentElement.children).filter(element => element.className == 'grafico-container')[0].firstElementChild;
   const loader = chart.parentElement.children[1]
+  const selectContainer = Array.from(parent.children)
+
+  message.classList.remove('active-message')
   chart.classList.add('hide')
   loader.classList.add('show')
-  const labels = Array.from(parent.children).filter(element => element.tagName == 'SELECT').map(element => element.value);
-  const checkBox = Array.from(parent.children).filter(element => element.tagName == 'INPUT').map(element => element.checked)
-  if (checkBox) {
-    labels.push(checkBox[0])
-  }
-  const parametros = await formataParametros(labels);
+
+  let parametros = []
+  selectContainer.map((tag) => {
+    let parametro = tag.children[1] ? tag.children[1] : false;
+    if (parametro.tagName === 'INPUT') {
+      parametros.push(parametro.checked);
+    }
+    else if (parametro.tagName === 'SELECT') {
+      parametros.push(parametro.value);
+    }
+
+  })
+
+  parametros = await formataParametros(parametros);
+
   if (parametros.ano_inicial > parametros.ano_final) {
     raiseDataError(message)
   }
@@ -92,6 +102,3 @@ export async function coordenaGraficos() {
     });
   })
 }
-
-
-

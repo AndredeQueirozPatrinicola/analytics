@@ -7,6 +7,7 @@
 {% block content %}
 
     <div class="dashboard-row">
+        {% if user.is_authenticated %}
         <div class="card-dash-6 dark-card-dash">
             <div class="select-container">
                 <select class="select-grafico producao-historica">
@@ -19,6 +20,7 @@
                 <canvas id="producao-historica"></canvas>
             </div>
         </div>
+        {% endif %}
         {% if tabela_publicacoes %}
         <div class="card-dash-3">
 
@@ -35,11 +37,13 @@
             {% include 'includes/tabelas/_tabela_orientandos.html' %}
 
         </div>
+        {% if user.is_authenticated %}
         <div class="card-dash-3">
             <div class="grafico-container">
                 <canvas id="orientandos"></canvas>
             </div>
         </div>
+        {% endif %}
     </div>
     {% endif %}
 

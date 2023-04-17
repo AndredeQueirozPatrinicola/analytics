@@ -10,11 +10,14 @@
 <div class="dashboard-row">
   <div class="card-dash-6">
     <div class="select-container">
-      <select class="select-grafico prod-por-ano">
-        {% for departamento in departamentos %}
+      <div>
+        <label>Departamento</label>
+        <select class="select-grafico prod-por-ano">
+          {% for departamento in departamentos %}
           <option value="{{ departamento }}">{{ departamento }}</option>
-        {% endfor %}
-      </select>
+          {% endfor %}
+        </select>
+      </div>
       <btn class="btn btn-dark me-5" style="background-color: #052e70;">
         Buscar
       </btn>
@@ -23,24 +26,31 @@
 
       <canvas id="prod-por-ano"></canvas>
 
+      <div class="loader show"></div>
+
       {% include 'includes/fonte.html' %}
     </div>
   </div>
   <div class="card-dash-3">
     <div class="select-container">
-      <select class="select-grafico prod-total">
-        {% for departamento in departamentos %}
+      <div>
+        <label>Departamento</label>
+        <select class="select-grafico prod-total">
+          {% for departamento in departamentos %}
           <option value="{{ departamento }}">{{ departamento }}</option>
-        {% endfor %}
-      </select>
+          {% endfor %}
+        </select>
+      </div>
       <btn class="btn btn-dark me-5" style="background-color: #052e70;">
         Buscar
       </btn>
     </div>
-    
+
     <div class="grafico-container">
 
       <canvas id="prod-total"></canvas>
+
+      <div class="loader show"></div>
 
       {% include 'includes/fonte.html' %}
     </div>
@@ -48,22 +58,27 @@
 </div>
 
 <div class="dashboard-row">
-  
+
   <div class="card-dash-3">
     <div class="select-container">
-      <select class="select-grafico defesas">
-        {% for departamento in departamentos %}
+      <div>
+        <label>Departamento</label>
+        <select class="select-grafico defesas">
+          {% for departamento in departamentos %}
           <option value="{{ departamento }}">{{ departamento }}</option>
-        {% endfor %}
-      </select>
+          {% endfor %}
+        </select>
+      </div>
       <btn class="btn btn-dark me-5" style="background-color: #052e70;">
         Buscar
       </btn>
     </div>
-    
+
     <div class="grafico-container">
 
       <canvas id="defesas"></canvas>
+
+      <div class="loader show"></div>
 
       {% include 'includes/fonte.html' %}
     </div>
@@ -78,9 +93,9 @@
 </div>
 
 <div class="dashboard-row">
-  
+
   <div class="card-dash-6">
-    
+
     {% include 'includes/tabelas/tabela_todos_docentes.html' %}
 
   </div>
@@ -88,27 +103,34 @@
   <div class="card-dash-3 has-childs">
     <div class="card-dash-child">
       <div class="grafico-container">
-  
+
         <canvas id="professores"></canvas>
-  
+
+        <div class="loader show"></div>
+
         {% include 'includes/fonte.html' %}
       </div>
     </div>
     <div class="card-dash-child">
       <div class="select-container">
-        <select class="select-grafico tipo-vinculo">
-          {% for departamento in departamentos %}
+        <div>
+          <label>Departamento</label>
+          <select class="select-grafico tipo-vinculo">
+            {% for departamento in departamentos %}
             <option value="{{ departamento }}">{{ departamento }}</option>
-          {% endfor %}
-          <btn class="btn btn-dark me-5" style="background-color: #052e70;">
-            Buscar
-          </btn>
-        </select>
+            {% endfor %}
+          </select>
+        </div>
+        <btn class="btn btn-dark me-5" style="background-color: #052e70;">
+          Buscar
+        </btn>
       </div>
       <div class="grafico-container">
-        
+
         <canvas id="tipo-vinculo"></canvas>
-        
+
+        <div class="loader show"></div>
+
         {% include 'includes/fonte.html' %}
       </div>
     </div>
